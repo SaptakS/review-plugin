@@ -9,16 +9,124 @@ function init() {
 		currentTabId = tabs[0].id;
 	});	
 	
+	//checkValid(localStorage.url);
+	
 }
+
+chrome.tabs.onActivated.addListener(function(activeInfo){
+	var url = chrome.tabs.executeScript(null, {code:"document.URL"}, 
+	function(results){
+		console.log(results);
+		if(results != undefined){
+			localStorage.url = results;
+		//alert(localStorage.url);
+		
+			var regex_valid = /www.amazon.+\/gp\/product\/\w+\/|www.amazon.+\/.+\/dp\/\w+\//g;	//regex to check whether the url is valid or not
+			var n = localStorage.url.search(regex_valid);
+			//alert(url);
+			// search() returns -1 if the url doesnt contain the regex.
+			if(n == -1){
+				localStorage.valid = 0;
+				//localStorage.url = "null";
+			}
+
+			else if(n != -1){
+				//valid url
+				localStorage.valid = 1;
+			}
+			//alert(localStorage.valid);
+		}else{
+			console.log("url is undefined");
+		}
+	});
+});
+
+chrome.windows.onFocusChanged.addListener(function(windowId) {
+	var url = chrome.tabs.executeScript(null, {code:"document.URL"}, 
+	function(results){
+		console.log(results);
+		if(results != undefined){
+			localStorage.url = results;
+		//alert(localStorage.url);
+		
+			var regex_valid = /www.amazon.+\/gp\/product\/\w+\/|www.amazon.+\/.+\/dp\/\w+\//g;	//regex to check whether the url is valid or not
+			var n = localStorage.url.search(regex_valid);
+			//alert(url);
+			// search() returns -1 if the url doesnt contain the regex.
+			if(n == -1){
+				localStorage.valid = 0;
+				//localStorage.url = "null";
+			}
+
+			else if(n != -1){
+				//valid url
+				localStorage.valid = 1;
+			}
+			//alert(localStorage.valid);
+		}else{
+			console.log("url is undefined");
+		}
+	});
+});
 
 //execute the script when a new url is loaded in the tab or when the page is refreshed
 chrome.tabs.onUpdated.addListener(function(activeInfo){
-	chrome.tabs.executeScript(null, {file: "js/jquery-1.11.1.js"});
-	chrome.tabs.executeScript(null, {file: "js/script.js"});
+	/*chrome.tabs.executeScript(null, {file: "jquery-1.11.1.js"});
+	chrome.tabs.executeScript(null, {file: "url.js"});*/
+	var url = chrome.tabs.executeScript(null, {code:"document.URL"}, 
+	function(results){
+		console.log(results);
+		if(results != undefined){
+			localStorage.url = results;
+		//alert(localStorage.url);
+		
+			var regex_valid = /www.amazon.+\/gp\/product\/\w+\/|www.amazon.+\/.+\/dp\/\w+\//g;	//regex to check whether the url is valid or not
+			var n = localStorage.url.search(regex_valid);
+			//alert(url);
+			// search() returns -1 if the url doesnt contain the regex.
+			if(n == -1){
+				localStorage.valid = 0;
+				//localStorage.url = "null";
+			}
+
+			else if(n != -1){
+				//valid url
+				localStorage.valid = 1;
+			}
+			//alert(localStorage.valid);
+		}else{
+			console.log("url is undefined");
+		}
+	});
 });
 
 //execute the script when a new tab is created with a url		
 chrome.tabs.onCreated.addListener(function(tab) {
-	chrome.tabs.executeScript(null, {file: "js/jquery-1.11.1.js"});
-	chrome.tabs.executeScript(null, {file: "js/script.js"});
+	/*chrome.tabs.executeScript(null, {file: "jquery-1.11.1.js"});
+	chrome.tabs.executeScript(null, {file: "url.js"});*/
+	var url = chrome.tabs.executeScript(null, {code:"document.URL"}, 
+	function(results){
+		console.log(results);
+		if(results != undefined){
+			localStorage.url = results;
+		//alert(localStorage.url);
+		
+			var regex_valid = /www.amazon.+\/gp\/product\/\w+\/|www.amazon.+\/.+\/dp\/\w+\//g;	//regex to check whether the url is valid or not
+			var n = localStorage.url.search(regex_valid);
+			//alert(url);
+			// search() returns -1 if the url doesnt contain the regex.
+			if(n == -1){
+				localStorage.valid = 0;
+				//localStorage.url = "null";
+			}
+
+			else if(n != -1){
+				//valid url
+				localStorage.valid = 1;
+			}
+			//alert(localStorage.valid);
+		}else{
+			console.log("url is undefined");
+		}
+	});
 });

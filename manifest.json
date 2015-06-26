@@ -5,10 +5,11 @@
 	"description" : "Sentiment Analysis of Product Reviews",
 	"browser_action" : {
 		"name" : "Opinator",
-		"default_icon": "icons/images19.png"
+		"default_icon": "icons/images19.png",
+		"default_popup": "popup.html"
 	},
 	"background": {
-		"page": "background.html"
+		"scripts": ["js/background.js"]
 	},
 	"permissions" : ["tabs", "http://*/*"],
 	"icons" : {
