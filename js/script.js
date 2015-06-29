@@ -33,7 +33,7 @@ window.onload = function(){
 			extractUrl();
 		//});
 	} else {
-		document.getElementById('valid').innerHTML = "<div style='color:#fff'>Not a Product Page</div>";
+		document.getElementById('valid').innerHTML = "<div style='color:#fff;font-size: 3em;position: absolute;top: 20%;text-align: center;'>Sorry, not a Product Page</div>";
 		//$("#opinate").hide();
 	}
 	
