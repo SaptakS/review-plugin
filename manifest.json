@@ -11,7 +11,7 @@
 	"background": {
 		"scripts": ["js/background.js"]
 	},
-	"permissions" : ["tabs", "http://*/*"],
+	"permissions" : ["tabs", "http://*/*, *://*.facebook.com/*, *://*.google.com/*"],
 	"icons" : {
 		"16": "icons/images16.png",
 		"48": "icons/images48.png",
