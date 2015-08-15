@@ -9,23 +9,9 @@
 		  We design the regex for checking accordingly and while extracting we take this into account.
 */
 window.onload = function(){
-	
-	/*var url = document.URL;
-	var regex_valid = /www.amazon.+\/gp\/product\/\w+\/|www.amazon.+\/.+\/dp\/\w+\//g;	//regex to check whether the url is valid or not
-	var n = url.search(regex_valid);
+	sectionView();
+	menu();
 
-	// search() returns -1 if the url doesnt contain the regex.
-	if(n == -1){
-		alert("URL Not Valid for review");
-		n = 0;
-	}
-
-	else if(n != -1){
-		//valid url
-		extractUrl();		
-	}*/
-	//extractUrl();
-	
 	if (localStorage.valid == "1"){
 		//document.getElementById('valid').innerHTML = "A Product Page";
 		//$("#opinate").show();
@@ -38,11 +24,30 @@ window.onload = function(){
 	}
 	
 	
+	//extractUrl();
+
+	function sectionView() {
+		$('section.chart-sections').hide();
+		var section = $('#cssmenu ul li.active').children("a").attr("href");
+		$('section' + section).show();
+	}
+
+	function menu() {
+		$('#cssmenu ul li').click(function(){
+		    $('#cssmenu ul li').removeClass("active");
+		    $(this).addClass("active");
+		    sectionView();
+		});
+	}
+	
 
 	//to display the review	
-	function addReview(data) {
+	function addReview(data1, data2, data3, data4) {
 
-		$("#opinator").drawDoughnutChart(data);
+		addPieChart(data1);
+		addScatter(data2);
+		addLineChart(data3);
+		addBarChart(data4);
 					
 	}
 
@@ -72,16 +77,93 @@ window.onload = function(){
 		$(document).ajaxComplete(function() {
 			$('div.loading img').css("display", "none");
 		});
+/*
+		var datapoints1 = [
+	        {  y: 8, indexLabel: "Excellent" },
+	        {  y: 42, indexLabel: "Good" },
+	        {  y: 10, indexLabel: "Neutral" },
+	        {  y: 35, indexLabel: "Bad"},
+	        {  y: 5, indexLabel: "Very Bad" }
+	      ];
 
-		/*result = [
-		    { title: "Too Good",         value : 120,  color: "#32ff32" },
-		    { title: "Good", value:  80,   color: "#b2ffb2" },
-		    { title: "Neutral",      value:  70,   color: "#F7E248" },
-		    { title: "Bad",        value : 50,   color: "#ff6666" },
-		    { title: "Too Bad",        value : 40,   color: "#ff3232" }
-		  ];
+	     var datapoints2 = [
 
-		addReview(result);*/
+		     { x: 1, y: 2 },
+		     { x: 2, y: 0},
+		     { x: 3, y: 1},
+		     { x: 4, y: 1},
+
+		     { x: 5, y: 1},
+		     { x: 6, y: 0},
+		     { x: 7, y: -1},
+		     { x: 8, y: 1},
+		     { x: 9, y: -1},
+		     { x: 10, y: -2}
+
+		     
+			];
+
+		var datapoints3 = [
+        { x: new Date(2012, 00, 1), y: 450 },
+        { x: new Date(2012, 01, 1), y: 414},
+        { x: new Date(2012, 02, 1), y: 520, indexLabel: "highest",markerColor: "red", markerType: "triangle"},
+        { x: new Date(2012, 03, 1), y: 460 },
+        { x: new Date(2012, 04, 1), y: 450 },
+        { x: new Date(2012, 05, 1), y: 500 },
+        { x: new Date(2012, 06, 1), y: 480 },
+        { x: new Date(2012, 07, 1), y: 480 },
+        { x: new Date(2012, 08, 1), y: 410 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross"},
+        { x: new Date(2012, 09, 1), y: 500 },
+        { x: new Date(2012, 10, 1), y: 480 },
+        { x: new Date(2012, 11, 1), y: 510 }
+        ];
+
+        var datapoints4 = [
+      {
+        type: "bar",
+        showInLegend: true,
+        legendText: "Good",
+        color: "green",
+        dataPoints: [
+        { y: 198, label: "Feature1"},
+        { y: 201, label: "Feature2"},
+        { y: 202, label: "Feature3"},
+        { y: 236, label: "Feature4"},
+        { y: 395, label: "Feature5"},
+        { y: 957, label: "Feature6"}
+        ]
+      },
+      {
+        type: "bar",
+        showInLegend: true,
+        legendText: "Neutral",
+        color: "yellow",
+        dataPoints: [
+        { y: 19, label: "Feature1"},
+        { y: 20, label: "Feature2"},
+        { y: 200, label: "Feature3"},
+        { y: 436, label: "Feature4"},
+        { y: 195, label: "Feature5"},
+        { y: 95, label: "Feature6"}
+        ]
+      },
+      {
+        type: "bar",
+        showInLegend: true,
+        legendText: "Bad",
+        color: "red",
+        dataPoints: [
+        { y: 1, label: "Feature1"},
+        { y: 21, label: "Feature2"},
+        { y: 22, label: "Feature3"},
+        { y: 23, label: "Feature4"},
+        { y: 390, label: "Feature5"},
+        { y: 9, label: "Feature6"}
+        ]
+      }
+      ];
+
+		addReview(datapoints1, datapoints2, datapoints3, datapoints4);*/
 
 
 		// The flask server
