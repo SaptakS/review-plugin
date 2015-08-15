@@ -63,11 +63,15 @@ function addLineChart(datapoints) {
       	text: "Variation in Review over Time"
       },
       axisX: {
+      	title: "Year 2015",
         valueFormatString: "MMM",
         interval:1,
         intervalType: "month"
       },
       axisY:{
+      	title: "Sentiment Value",
+      	minimum: -3,
+      	maximum: 3,
         includeZero: false
 
       },

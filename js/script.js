@@ -104,18 +104,18 @@ window.onload = function(){
 			];
 
 		var datapoints3 = [
-        { x: new Date(2012, 00, 1), y: 450 },
-        { x: new Date(2012, 01, 1), y: 414},
-        { x: new Date(2012, 02, 1), y: 520, indexLabel: "highest",markerColor: "red", markerType: "triangle"},
-        { x: new Date(2012, 03, 1), y: 460 },
-        { x: new Date(2012, 04, 1), y: 450 },
-        { x: new Date(2012, 05, 1), y: 500 },
-        { x: new Date(2012, 06, 1), y: 480 },
-        { x: new Date(2012, 07, 1), y: 480 },
-        { x: new Date(2012, 08, 1), y: 410 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross"},
-        { x: new Date(2012, 09, 1), y: 500 },
-        { x: new Date(2012, 10, 1), y: 480 },
-        { x: new Date(2012, 11, 1), y: 510 }
+        { x: new Date(2012, 00, 1), y: 1.8 },
+        { x: new Date(2012, 01, 1), y: 1.9},
+        { x: new Date(2012, 02, 1), y: 2, indexLabel: "highest",markerColor: "red", markerType: "triangle"},
+        { x: new Date(2012, 03, 1), y: 1.98 },
+        { x: new Date(2012, 04, 1), y: 1.77 },
+        { x: new Date(2012, 05, 1), y: 1.5 },
+        { x: new Date(2012, 06, 1), y: 1 },
+        { x: new Date(2012, 07, 1), y: 0.3 },
+        { x: new Date(2012, 08, 1), y: -0.3 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross"},
+        { x: new Date(2012, 09, 1), y: 0.87 },
+        { x: new Date(2012, 10, 1), y: 1.1 },
+        { x: new Date(2012, 11, 1), y: 1.2 }
         ];
 
         var datapoints4 = [
