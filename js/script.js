@@ -56,7 +56,7 @@ window.onload = function(){
 	function extractUrl() {
 	  
 		var url = localStorage.url;	  	  
-		var extracting_regex = /\/dp\/\w+\/|\/product\/\w+\//g;		//product code extracting regex
+		var extracting_regex = /\/dp\/\w+\/|\/product\/\w+(\/|\?)/g;		//product code extracting regex
 		var match = url.match(extracting_regex);					//match extracts the string which matches the regex from the url.
 		match = ""+match;
 		var pCode = "";
