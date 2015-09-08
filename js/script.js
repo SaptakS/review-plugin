@@ -192,7 +192,7 @@ window.onload = function(){
 		// Put the results in a div
 		posting.done(function(result) {
 			//addReview(result);
-			alert("Data Loaded: " + result);
+			alert("Sentiment: " + result['sentiment'] + "\nScore: " + result['sentiment_score']);
 		});
 
 		/*
