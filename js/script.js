@@ -13,13 +13,16 @@ window.onload = function(){
 	menu();
 
 	if (localStorage.valid == "1"){
+		//alert("hello");
 		//document.getElementById('valid').innerHTML = "A Product Page";
 		//$("#opinate").show();
 		//$("#opinate").click(function() {
 			extractUrl();
 		//});
 	} else {
-		document.getElementById('valid').innerHTML = "<div style='color:#fff;font-size: 3em;position: absolute;top: 20%;text-align: center;'>Sorry, not a Product Page</div>";
+		//alert("hello");
+		document.getElementsByTagName('body')[0].innerHTML = "<div style='color:#B3B3B3;font-size: 3em;position: absolute;top: 20%;text-align: center;'>Sorry, not a Product Page</div>";
+		
 		//$("#opinate").hide();
 	}
 	
@@ -169,13 +172,13 @@ window.onload = function(){
 
 
 		// The flask server
-		var SERVER = "http://127.0.0.1:5000/";
+		var SERVER = "http://172.19.12.147:5000/";
 
 		//here we put the code to send the product code to driverphp to extract review and do sentiment analysis.
 		var data = {
 		    'product_id':   pCode,
 		    'url':          url,
-		    'website_name': 'AmazonIN',
+		    'website_name': 'amazonIN',
 		}
 
 		// The transfer of data from the plugin to the server
