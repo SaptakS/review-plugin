@@ -56,7 +56,7 @@ window.onload = function(){
 	function extractUrl() {
 	  
 		var url = localStorage.url;	  	  
-		var extracting_regex = /\/dp\/\w+\/|\/product\/\w+\//g;		//product code extracting regex
+		var extracting_regex = /\/dp\/\w+\/|\/product\/\w+(\/|\?)/g;		//product code extracting regex
 		var match = url.match(extracting_regex);					//match extracts the string which matches the regex from the url.
 		match = ""+match;
 		var pCode = "";
@@ -72,10 +72,12 @@ window.onload = function(){
 		//alert(pCode);
 
 		$(document).ajaxStart(function() {
+			$('div#contentShow').css("display", "none");
 			$('div.loading img').css("display", "block");
 		});
 		$(document).ajaxComplete(function() {
 			$('div.loading img').css("display", "none");
+			$('div#contentShow').css("display", "block");
 		});
 /*
 		var datapoints1 = [
