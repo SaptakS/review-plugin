@@ -175,7 +175,7 @@ window.onload = function(){
 		var data = {
 		    'product_id':   pCode,
 		    'url':          url,
-		    'website_name': 'AmazonIN',
+		    'website_name': 'amazonIN',
 		}
 
 		// The transfer of data from the plugin to the server
