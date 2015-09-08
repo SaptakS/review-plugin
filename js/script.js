@@ -72,10 +72,12 @@ window.onload = function(){
 		//alert(pCode);
 
 		$(document).ajaxStart(function() {
+			$('div#contentShow').css("display", "none");
 			$('div.loading img').css("display", "block");
 		});
 		$(document).ajaxComplete(function() {
 			$('div.loading img').css("display", "none");
+			$('div#contentShow').css("display", "block");
 		});
 /*
 		var datapoints1 = [
