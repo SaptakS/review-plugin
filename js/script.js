@@ -172,7 +172,7 @@ window.onload = function(){
 
 
 		// The flask server
-		var SERVER = "http://172.19.12.147:5000/";
+		var SERVER = "http://127.0.0.1:5000/";
 
 		//here we put the code to send the product code to driverphp to extract review and do sentiment analysis.
 		var data = {
