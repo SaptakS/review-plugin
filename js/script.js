@@ -12,18 +12,11 @@ window.onload = function(){
 	sectionView();
 	menu();
 
-	if (localStorage.valid == "1"){
-		//alert("hello");
-		//document.getElementById('valid').innerHTML = "A Product Page";
-		//$("#opinate").show();
-		//$("#opinate").click(function() {
-			extractUrl();
-		//});
-	} else {
-		//alert("hello");
-		document.getElementsByTagName('body')[0].innerHTML = "<div style='color:#B3B3B3;font-size: 3em;position: absolute;top: 20%;text-align: center;'>Sorry, not a Product Page</div>";
+	if (localStorage.valid == "1"){		
+		extractUrl();
 		
-		//$("#opinate").hide();
+	} else {
+		document.getElementsByTagName('body')[0].innerHTML = "<div style='color:#B3B3B3;font-size: 3em;position: absolute;top: 20%;text-align: center;'>Sorry, not a Product Page</div>";
 	}
 	
 	
@@ -42,15 +35,31 @@ window.onload = function(){
 		    sectionView();
 		});
 	}
+
+	//to display summary
+	function addSummary(summary) {
+		console.log(summary);
+		var bushy_neg = summary['bushy']['negative'];
+		var bushy_pos = summary['bushy']['positive'];
+		var pagerank_neg = "<a href='" + summary['google_page_rank']['negative'] + "' target='_blank'>Read Entire Summary</a>";
+		var pagerank_pos = "<a href='" + summary['google_page_rank']['positive'] + "' target='_blank'>Read Entire Summary</a>";
+		$('#summaryContainer').html("");
+		$('#summaryContainer').append("<h3>Positive: </h3>");
+		$('#summaryContainer').append(bushy_neg);
+		$('#summaryContainer').append(pagerank_neg);
+		$('#summaryContainer').append("<h3>Negative: </h3>");
+		$('#summaryContainer').append(bushy_pos);
+		$('#summaryContainer').append(pagerank_pos);
+	}
 	
 
 	//to display the review	
-	function addReview(data1, data2, data3, data4) {
-
+	function addReview(data1) {
+		console.log(data1);
 		addPieChart(data1);
-		addScatter(data2);
+		/*(addScatter(data2);
 		addLineChart(data3);
-		addBarChart(data4);
+		addBarChart(data4);*/
 					
 	}
 
@@ -82,7 +91,8 @@ window.onload = function(){
 			$('div.loading img').css("display", "none");
 			$('div#contentShow').css("display", "block");
 		});
-/*
+	
+/*		//Sample Code to make the extension work. Can be used for front end testing
 		var datapoints1 = [
 	        {  y: 8, indexLabel: "Excellent" },
 	        {  y: 42, indexLabel: "Good" },
@@ -91,7 +101,7 @@ window.onload = function(){
 	        {  y: 5, indexLabel: "Very Bad" }
 	      ];
 
-	     var datapoints2 = [
+		     var datapoints2 = [
 
 		     { x: 1, y: 2 },
 		     { x: 2, y: 0},
@@ -168,11 +178,38 @@ window.onload = function(){
       }
       ];
 
-		addReview(datapoints1, datapoints2, datapoints3, datapoints4);*/
+		addReview(datapoints1, datapoints2, datapoints3, datapoints4);
+		var summary = {
+					bushy: {
+							negative: "This is the short summary for negative reviews",
+							positive: "This is the short summary for positive reviews"
+						},
+					google_page_rank: {
+							negative: "abcd",
+							positive: "abcd",
+						}
+				};
+
+		var counts = {
+					negative: "91",
+					neutral: "77",
+					positive: "137",
+					very_negative: "2",
+					very_positive: "3"
+				};
+		var data1 = [];
+		for (count in counts) {
+			var data = {};			
+			data['y'] = parseInt(counts[count]);
+			data['indexLabel'] = count;
+			data1.push(data);
+		}
+		addReview(data1);
+		addSummary(summary);*/
 
 
 		// The flask server
-		var SERVER = "http://127.0.0.1:5000/";
+		/*var SERVER = "http://172.19.15.248:5001/";
 
 		//here we put the code to send the product code to driverphp to extract review and do sentiment analysis.
 		var data = {
@@ -191,30 +228,22 @@ window.onload = function(){
 
 		// Put the results in a div
 		posting.done(function(result) {
-			//addReview(result);
-			alert("Sentiment: " + result['sentiment'] + "\nScore: " + result['sentiment_score']);
-		});
-
-		/*
-		var SERVER = "http://127.0.0.1/opinator/scraper/driverphp.php";
-		//here we put the code to send the product code to driverphp to extract review and do sentiment analysis.
-		var posting = $.post( SERVER, { product_code : pCode } );
-
-		// Put the results in a div
-		posting.done(function( data ) {
-			addReview(data);
-			//alert("Data Loaded: " + data);
-		});
-
-
-		/*
-		//here we put the code to send the product code to driverphp to extract review and do sentiment analysis.
-		var posting = $.post( "http://172.19.13.50/OpinatorScraper/DriverPHP.php", { isbn_code : pCode } );
-
-		// Put the results in a div
-		posting.done(function( data ) {
-		//addReview(data);
-		alert("Data Loaded: " + data);
+			var data1 = [];
+			var counts = result['counts'];
+			for (count in counts) {
+				var data = {};			
+				data['y'] = parseInt(counts[count]);
+				data['indexLabel'] = count;
+				data1.push(data);
+			}
+			addReview(data1);
+			addSummary(result['summary']);
+			alert("hello");
+			console.log("done");
+			//alert("Sentiment: " + result['sentiment'] + "\nScore: " + result['sentiment_score']);
+			console.log(result);
+			var data1 = result['counts'];
 		});*/
+		
 	}
 }

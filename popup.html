@@ -27,6 +27,22 @@
 			    content: "";
 			    
 			}
+
+			.heading {
+				background: #f96e5b;
+			    width: 100%;
+			    height: 13%;
+			    font-size: 1.5em;
+			    position: fixed;
+			    top: 0px;
+			    left: 0px;
+			    z-index: 10;
+			}
+
+			div#summaryContainer {
+			    padding-top: 10%;
+			    font-size: 1.2em;
+			}
 		
 		</style>
 		
@@ -42,21 +58,26 @@
 			<h2 style="margin-left:45%;margin-top:-20%;color:#B3B3B3"> Loading ... </h2>
 		</div>
 		<div id = "contentShow">
-			<div id="summary">
+			<!--<div id="summary">
 				<a href="xyz.pdf" target="_blank">Review Summary</a>
-			</div>
+			</div>-->
 			<div id="cssmenu">
 				<ul>
-					<li class="active"><a href="#sentiChart">Product Sentiments</a></li>
-					<li><a href="#scatterChart">Scatter Graph</a></li>
+					<li class="active"><a href="#summaryContent">Review Summary</a></li>
+					<li><a href="#sentiChart">Product Sentiments</a></li>
+					<!--<li><a href="#scatterChart">Scatter Graph</a></li>
 					<li><a href="#timeChart">Variation over time</a></li>
-					<li class="last"><a href="#featuristicChart">Featuristic Analysis</a></li>
+					<li class="last"><a href="#featuristicChart">Featuristic Analysis</a></li>-->
 				</ul>
 			</div>
+			<section id="summaryContent" class="chart-sections">
+				<center class='heading'><h1>Summary of Product Reviews</h1></center>
+				<div id="summaryContainer" style="height: 70%; width: 100%;"></div>
+			</section>
 			<section id="sentiChart" class="chart-sections">
 				<div id="pieChartContainer" style="height: 70%; width: 100%;"></div>
 			</section>	
-			<section id="scatterChart" class="chart-sections">
+			<!--<section id="scatterChart" class="chart-sections">
 				<div id="scatterChartContainer" style="height: 70%; width: 100%;"></div>
 			</section>	
 			<section id="timeChart" class="chart-sections">
@@ -64,7 +85,7 @@
 			</section>	
 			<section id="featuristicChart" class="chart-sections">
 				<div id="barChartContainer" style="height: 70%; width: 100%;"></div>
-			</section>
+			</section>-->
 		</div>
 	</body>
 
