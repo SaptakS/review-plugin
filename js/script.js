@@ -18,10 +18,12 @@ window.onload = function(){
 		//$("#opinate").show();
 		//$("#opinate").click(function() {
 			extractUrl();
+			tabularMenu();
 		//});
 	} else {
 		//alert("hello");
-		document.getElementsByTagName('body')[0].innerHTML = "<div style='color:#B3B3B3;font-size: 3em;position: absolute;top: 20%;text-align: center;'>Sorry, not a Product Page</div>";
+		document.getElementsByTagName('body')[0].innerHTML = 
+		"<div style='color:#B3B3B3;font-size: 3em;position: absolute;top: 20%;text-align: center;'>Sorry, not a Product Page</div>";
 		
 		//$("#opinate").hide();
 	}
@@ -216,5 +218,25 @@ window.onload = function(){
 		//addReview(data);
 		alert("Data Loaded: " + data);
 		});*/
+	}
+
+	//function to control the tabular menu
+	function tabularMenu() {
+		var allItems = $( 'a.item' ).toArray();
+		var activeItem = $('a.active');
+
+		for ( var i in allItems ) {
+			$( allItems[i] ).bind( 
+				"click", 
+				bindClick( allItems[i] ) 
+			);
+		}
+	}
+
+	function bindClick( item ) {
+		return function() {
+			$( item ).addClass('active');
+			$( 'a.item' ).not( item ).removeClass( 'active' );
+		}
 	}
 }
