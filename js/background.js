@@ -21,7 +21,7 @@ chrome.tabs.onActivated.addListener(function(activeInfo){
 			localStorage.url = results;
 		//alert(localStorage.url);
 		
-			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/*\/dp\/\w+(\/|\?)/g;	//regex to check whether the url is valid or not
+			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/*\/dp\/\w+(\/|\?)|www.flipkart.+\/*\/p\/\w+|www.snapdeal.+\/product\/\w+/g;	//regex to check whether the url is valid or not
 			var n = localStorage.url.search(regex_valid);
 			//alert(url);
 			// search() returns -1 if the url doesnt contain the regex.
@@ -50,7 +50,7 @@ chrome.windows.onFocusChanged.addListener(function(windowId) {
 			localStorage.url = results;
 		//alert(localStorage.url);
 		
-			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/.+\/dp\/\w+(\/|\?)/g;	//regex to check whether the url is valid or not
+			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/*\/dp\/\w+(\/|\?)|www.flipkart.+\/*\/p\/\w+|www.snapdeal.+\/product\/\w+/g;	//regex to check whether the url is valid or not
 			var n = localStorage.url.search(regex_valid);
 			//alert(url);
 			// search() returns -1 if the url doesnt contain the regex.
@@ -83,7 +83,7 @@ chrome.tabs.onUpdated.addListener(function(activeInfo){
 			localStorage.url = results;
 		//alert(localStorage.url);
 		
-			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/.+\/dp\/\w+(\/|\?)/g;	//regex to check whether the url is valid or not
+			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/*\/dp\/\w+(\/|\?)|www.flipkart.+\/*\/p\/\w+|www.snapdeal.+\/product\/\w+/g;	//regex to check whether the url is valid or not
 			var n = localStorage.url.search(regex_valid);
 			//alert(url);
 			// search() returns -1 if the url doesnt contain the regex.
@@ -115,7 +115,7 @@ chrome.tabs.onCreated.addListener(function(tab) {
 			localStorage.url = results;
 		//alert(localStorage.url);
 		
-			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/.+\/dp\/\w+(\/|\?)/g;	//regex to check whether the url is valid or not
+			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/*\/dp\/\w+(\/|\?)|www.flipkart.+\/*\/p\/\w+|www.snapdeal.+\/product\/\w+/g;	//regex to check whether the url is valid or not
 			var n = localStorage.url.search(regex_valid);
 			//alert(url);
 			// search() returns -1 if the url doesnt contain the regex.
