@@ -12,10 +12,9 @@ window.onload = function(){
 	sectionView();
 	menu();
 
-	if (localStorage.valid == "1"){		
-		product_review_url = getProductReviewUrl();
-		extract_summary = getSummary(product_review_url);
-		
+	if (localStorage.valid == "1"){
+		extractUrl();
+
 	} else {
 		document.getElementsByTagName('body')[0].innerHTML = "<div style='color:#B3B3B3;font-size: 3em;position: absolute;top: 20%;text-align: center;'>Sorry, not a Product Page</div>";
 	}
@@ -49,22 +48,22 @@ window.onload = function(){
 		$('#summaryContainer').append(bushy_pos);
 		$('#summaryContainer').append(pagerank_pos);
 	}
-	
 
-	//to display the review	
+
+	//to display the review
 	function addReview(data1) {
 		console.log(data1);
 		addPieChart(data1);
 		/*(addScatter(data2);
 		addLineChart(data3);
 		addBarChart(data4);*/
-					
+
 	}
 
 	//Create product review url and send it for review scraping and sentiment analysis.
 	function getProductReviewUrl() {
-	  
-		var url = localStorage.url;	  	  
+
+		var url = localStorage.url;
 		var amazon_replacing_regex = /\/dp\/|\/product\//g;		//product code extracting regex
 		var flipkart_replacing_regex = /\/p\//g;
 		var snapdeal_replacing_regex = /\/dp\/|\/product\/|\/p\//g;
@@ -73,7 +72,7 @@ window.onload = function(){
 			review_url = url.replace(amazon_replacing_regex, '/product-reviews/');
 		} else if (url.includes('flipkart')) {
 			review_url = url.replace(flipkart_replacing_regex, '/product-reviews/');
-			review_url += "&type=all";	
+			review_url += "&type=all";
 		} else if (url.includes('snapdeal')) {
 			review_url += "/reviews";
 		}
@@ -93,7 +92,7 @@ window.onload = function(){
 			$('div.loading img').css("display", "none");
 			$('div#contentShow').css("display", "block");
 		});
-	
+
 /*		//Sample Code to make the extension work. Can be used for front end testing
 		var datapoints1 = [
 	        {  y: 8, indexLabel: "Excellent" },
@@ -117,7 +116,7 @@ window.onload = function(){
 		     { x: 9, y: -1},
 		     { x: 10, y: -2}
 
-		     
+
 			];
 
 		var datapoints3 = [
@@ -201,7 +200,7 @@ window.onload = function(){
 				};
 		var data1 = [];
 		for (count in counts) {
-			var data = {};			
+			var data = {};
 			data['y'] = parseInt(counts[count]);
 			data['indexLabel'] = count;
 			data1.push(data);
@@ -233,7 +232,7 @@ window.onload = function(){
 			var data1 = [];
 			var counts = result['counts'];
 			for (count in counts) {
-				var data = {};			
+				var data = {};
 				data['y'] = parseInt(counts[count]);
 				data['indexLabel'] = count;
 				data1.push(data);
@@ -246,14 +245,13 @@ window.onload = function(){
 			console.log(result);
 			var data1 = result['counts'];
 		});*/
-		
+
 	}
 
 
 	//extract product code and send it for review scraping and sentiment analysis.
 	function extractUrl() {
-	  
-		var url = localStorage.url;	  	  
+		var url = localStorage.url;
 		var extracting_regex = /\/dp\/\w+\/|\/product\/\w+(\/|\?)/g;		//product code extracting regex
 		var match = url.match(extracting_regex);					//match extracts the string which matches the regex from the url.
 		match = ""+match;
@@ -262,22 +260,24 @@ window.onload = function(){
 		/*if the extracted string has "product" then the beginning index of the product code in the string match is 9.
 		else if it contains "dp" then the beginning index of the product code in the string match is 2.*/
 		if(match.match(/product/g)) {
-			pCode = match.slice(9, match.length-1);	  	
+			pCode = match.slice(9, match.length-1);
 		} else if(match.match(/dp/g)) {
-			pCode = match.slice(4, match.length-1);	  	
+			pCode = match.slice(4, match.length-1);
 		}
 
 		//alert(pCode);
+    match_ = url.match(/http:\/\/www.\w+.\w+/g)[0];
+    var website = match_.slice(11);
 
-		/*$(document).ajaxStart(function() {
+		$(document).ajaxStart(function() {
 			$('div#contentShow').css("display", "none");
 			$('div.loading img').css("display", "block");
 		});
 		$(document).ajaxComplete(function() {
 			$('div.loading img').css("display", "none");
 			$('div#contentShow').css("display", "block");
-		});*/
-	
+		});
+
 /*		//Sample Code to make the extension work. Can be used for front end testing
 		var datapoints1 = [
 	        {  y: 8, indexLabel: "Excellent" },
@@ -301,7 +301,7 @@ window.onload = function(){
 		     { x: 9, y: -1},
 		     { x: 10, y: -2}
 
-		     
+
 			];
 
 		var datapoints3 = [
@@ -385,7 +385,7 @@ window.onload = function(){
 				};
 		var data1 = [];
 		for (count in counts) {
-			var data = {};			
+			var data = {};
 			data['y'] = parseInt(counts[count]);
 			data['indexLabel'] = count;
 			data1.push(data);
@@ -394,14 +394,15 @@ window.onload = function(){
 		addSummary(summary);*/
 
 
-		// The flask server
-		/*var SERVER = "http://172.19.15.248:5001/";
+		/*// The flask server
+		var SERVER = "<host:port>";
 
 		//here we put the code to send the product code to driverphp to extract review and do sentiment analysis.
 		var data = {
 		    'product_id':   pCode,
 		    'url':          url,
-		    'website_name': 'amazonIN',
+		    'website_name': website,
+        'email': 'vivekanand1101@gmail.com'
 		}
 
 		// The transfer of data from the plugin to the server
@@ -417,7 +418,7 @@ window.onload = function(){
 			var data1 = [];
 			var counts = result['counts'];
 			for (count in counts) {
-				var data = {};			
+				var data = {};
 				data['y'] = parseInt(counts[count]);
 				data['indexLabel'] = count;
 				data1.push(data);
@@ -426,10 +427,10 @@ window.onload = function(){
 			addSummary(result['summary']);
 			alert("hello");
 			console.log("done");
-			//alert("Sentiment: " + result['sentiment'] + "\nScore: " + result['sentiment_score']);
+			alert("Sentiment: " + result['sentiment'] + "\nScore: " + result['sentiment_score']);
 			console.log(result);
 			var data1 = result['counts'];
 		});*/
-		
+
 	}
 }
