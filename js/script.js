@@ -9,7 +9,7 @@
 		  We design the regex for checking accordingly and while extracting we take this into account.
 */
 window.onload = function(){
-	sectionView();
+	//sectionView();
 	menu();
 
 	if (localStorage.valid == "1"){
@@ -26,10 +26,10 @@ window.onload = function(){
 	}
 
 	function menu() {
-		$('#cssmenu ul li').click(function(){
-		    $('#cssmenu ul li').removeClass("active");
+		$('.menu .item').click(function(){
+		    $('.menu .item').removeClass("active");
 		    $(this).addClass("active");
-		    sectionView();
+		    //sectionView();
 		});
 	}
 
