@@ -10,6 +10,7 @@
 */
 window.onload = function(){
 	//sectionView();
+	$("#crawl").click(crawl);
 	menu();
 
 	if (localStorage.valid == "1"){
@@ -436,5 +437,9 @@ window.onload = function(){
 			var data1 = result['counts'];
 		});*/
 
+	}
+
+	function crawl() {
+		console.log(localStorage.title);
 	}
 }
