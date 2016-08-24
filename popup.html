@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Opinator</title>
-		
+	
 		<link rel="stylesheet" href="css/styles.css">
 		<style type="text/css"> 
 			#summary {
@@ -27,21 +27,31 @@
 			    content: "";
 			    
 			}
+			.ui.raised.container {
+				position: absolute;
+				top: 0px;
+				border: 1px solid #d4d4d5;
+    			padding: 1rem;
+    			margin-top: 2%;
+			}
+			#contentShow {
+				display: none;
+			}
 		
 		</style>
-		
+		<link rel="stylesheet" href="css/semantic.min.css">	
 		<script src="js/chart.js"></script>
 		<script type="text/javascript" src="js/canvasjs.min.js"></script>
 		<script src="js/jquery-1.11.1.js"></script>
 		<script src="js/script.js"></script>
 	</head>
-	<body style="width:50em; height:30em;">
+	<body style="width:50em; height:30rem;">
 		
 		<div class="loading" style="">
 			<img src="icons/loading.gif" style="width:100%;"/>
 			<h2 style="margin-left:45%;margin-top:-20%;color:#B3B3B3"> Loading ... </h2>
 		</div>
-		<div id = "contentShow">
+		<!-- <div id = "contentShow">
 			<div id="summary">
 				<a href="xyz.pdf" target="_blank">Review Summary</a>
 			</div>
@@ -65,6 +75,61 @@
 			<section id="featuristicChart" class="chart-sections">
 				<div id="barChartContainer" style="height: 70%; width: 100%;"></div>
 			</section>
+		</div> -->
+		<div class="ui raised container segment" id="contentShow">
+			<div class="ui grid">
+			  <div class="four wide column">
+			    <div class="ui vertical fluid tabular menu">
+			      <a class="active item">
+			        Amazon
+			      </a>
+			      <a class="item">
+			        Flipkart
+			      </a>
+			      <a class="item">
+			        Snapdeal
+			      </a>
+			      <a class="item">
+			        Miscellaneous
+			      </a>
+			      <a class="item">
+			        Setting
+			      </a>
+			    </div>
+			  </div>
+			  <div class="twelve wide stretched column">
+			    <div class="ui segment">
+			      	<div class="content">
+				      	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, recusandae, nisi ex nam iste placeat sapiente assumenda eaque officia officiis.
+			      	</div>
+			      	<div class="ui two column very relaxed grid">
+			      		<div class="column">
+			      			<h4 class="ui green header">Good</h4>
+			      			<div class="content">
+			      				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, modi.
+		      				</div>
+			      		</div>
+			      		<div class="ui vertical divider">and</div>
+			      		<div class="column">
+			      			<h4 class="ui red header">Bad</h4>
+			      			<div class="content">
+			      				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, modi.
+			      			</div>
+		      			</div>
+			      	</div>
+			    </div>
+			  </div>
+			</div>
+			<div class="ui inverted grid">
+				<div class="ui six item menu">
+					<div class="item">one</div>
+					<div class="item">two</div>
+					<div class="item">three</div>
+					<div class="item">four</div>
+					<div class="item">five</div>
+					<div class="item">six</div>
+				</div>
+			</div>
 		</div>
 	</body>
 

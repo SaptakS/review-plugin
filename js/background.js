@@ -21,7 +21,7 @@ chrome.tabs.onActivated.addListener(function(activeInfo){
 			localStorage.url = results;
 		//alert(localStorage.url);
 		
-			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/.+\/dp\/\w+(\/|\?)/g;	//regex to check whether the url is valid or not
+			var regex_valid = /www.amazon.+\/gp\/product\/\w+(\/|\?)|www.amazon.+\/*\/dp\/\w+(\/|\?)/g;	//regex to check whether the url is valid or not
 			var n = localStorage.url.search(regex_valid);
 			//alert(url);
 			// search() returns -1 if the url doesnt contain the regex.
